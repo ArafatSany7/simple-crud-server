@@ -37,7 +37,7 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+run().catch(console.log());
 
 app.get("/", (req, res) => {
   res.send("simple crud is running here: ");
@@ -46,3 +46,5 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Sample curd is running here on port : ${port}`);
 });
+
+// restart korte hobe
