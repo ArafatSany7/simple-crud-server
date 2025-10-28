@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 const port = process.env.PORT || 5000;
 const app = express();
 
@@ -9,9 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
-  "mongodb+srv://humansany7_db_user:xYXItnbTMR7g6Obm@cluster0.3rjuzkz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://humansany7_db_user:xYXItnbTMR7g6Obm@cluster0.3rjuzkz.mongodb.net/?appName=Cluster0";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -26,8 +26,7 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection .
-
+    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
@@ -37,14 +36,12 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.log());
+run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("simple crud is running here: ");
+  res.send("SIMPLE CRUD IS RUNNING ");
 });
 
 app.listen(port, () => {
-  console.log(`Sample curd is running here on port : ${port}`);
+  console.log(`Simple crud is running: ${port}`);
 });
-
-// restart korte hobe
